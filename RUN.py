@@ -48,7 +48,7 @@ def talk(message):
     messages.append({"role": "assistant", "content": content})
     messages.append({'role': 'user', 'content': message})
     response = client.chat.completions.create(
-        model="deepseek-chat",
+        model=os.environ.get("MODEL","deepseek-chat"),
         messages=messages,
         stream=True
     )
