@@ -3,11 +3,13 @@ from openai import OpenAI
 import requests
 import json
 from memory import save_memory
+from dotenv import load_dotenv
+load_dotenv()
 client = OpenAI(
-    api_key="DEEPSEEK_API_KEY",#Write Down Your DEEPSEEK_API_KEY
-    base_url="https://api.deepseek.com")
+    api_key=os.environ.get("API_KEY"),
+    base_url=os.environ.get("API_URL"))
 
-save_dir="/Users/watermelon/Documents/ProjectCarrot/memory_data"#Input your folder dir
+save_dir=os.environ.get("save_dir")#Input your folder dir
 file_name="carrot_memory.jsonl"
 path = os.path.join(save_dir, file_name)
 def filter_memory(user_input):
@@ -21,7 +23,7 @@ def filter_memory(user_input):
     记住只输出JSON!!!!不要任何废话!!!!!!
     """
     response = client.chat.completions.create(
-        model="deepseek-chat",
+        model=os.environ.get("MODEL"),
         messages=[
             {"role": "system", "content": filter_prompt},
             {"role": "user", "content": user_input}
