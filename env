@@ -1,0 +1,4 @@
+API_KEY=sk-321723f9c8b743598fd2a72b95b7ed99
+API_URL=https://api.deepseek.com
+MODEL=deepseek-chat
+save_dir=/Users/watermelon/Documents/ProjectCarrot/memory_data
